@@ -1,0 +1,33 @@
+html,body,#app{
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  color:#666666;
+  overflow: hidden;
+}
+.tab_page{
+  padding-top:49px;display: flex;flex-direction: column;
+}
+.pageBox{
+  margin:5px;background: #f0f2f5;padding: 5px;    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);transition: .3s;background: #ffffff;
+}
+.fixBox{
+  display: flex;flex: 1;flex-direction: column;
+}
+.lp-mini-btn{
+  padding: 4px;
+}
+.modalBody{
+  flex:1;overflow: auto;
+}
+.modalBottom{
+  border-top: solid 1px #f0f2f5;
+  padding: 10px;
+}
+
+
+.lp-card .el-card__header{
+  padding: 10px;
+}

@@ -1,0 +1,31 @@
+.search_box {
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex:1
+}
+.search_form_box{
+  flex: 1;display: flex;padding: 0px;
+}
+@keyframes btn_up
+{
+  from {transform:rotate(90deg)}
+  to {transform:rotate(270deg)}
+}
+@keyframes btn_down
+{
+
+  to {transform:rotate(90deg)}
+}
+.down{
+  animation: btn_down 300ms;
+  animation-fill-mode:forwards
+}
+.up{
+  animation: btn_up 300ms;
+  animation-fill-mode:forwards
+}
+.el-form-item{
+  margin-bottom: 0px;
+}
