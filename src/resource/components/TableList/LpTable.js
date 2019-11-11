@@ -18,25 +18,33 @@ export default {
     // },
   },
   mounted() {
-    let haldfun = this.$refs.tableHeader.handleSortClick;
-    this.$refs.tableHeader.handleSortClick = (event, column, givenOrder) => {
-      window.tablesort || (window.tablesort = {});
-      if (column.sortable) {
-        if (tablesort[column.sortable] == column.order) {
-          return;
-        }
-        this.store.states.sortingColumn = null
-        this.store.states.sortingColumn = _.clone(column);
-        this.store.states.sortingColumn.order = tablesort[column.sortable];
-        tablesort[column.sortable] = column.order
-      }
-      this.$nextTick(() => {
-        haldfun(event, column, givenOrder);
-      })
-    }
+    // let haldfun = this.$refs.tableHeader.handleSortClick;
+    // this.$refs.tableHeader.handleSortClick = (event, column, givenOrder) => {
+    //   window.tablesort || (window.tablesort = {});
+    //   if (column.sortable) {
+    //     if (tablesort[column.sortable] == column.order) {
+    //       return;
+    //     }
+    //     this.store.states.sortingColumn = null
+    //     this.store.states.sortingColumn = _.clone(column);
+    //     this.store.states.sortingColumn.order = tablesort[column.sortable];
+    //     tablesort[column.sortable] = column.order
+    //   }
+    //   this.$nextTick(() => {
+    //     haldfun(event, column, givenOrder);
+    //   })
+    // }
   },
-
-
-  method: {},
+  methods:{
+ //    resetTable(){
+ //      console.log("b");
+ //      window.tablesort = {};
+ // //     this.store.states.sortingColumn = null;
+ //      this.clearSort();
+ //
+ //
+ //
+ //    }
+  },
   extends: Table,
 }

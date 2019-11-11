@@ -1,17 +1,14 @@
 <template>
     <div class="tab_page">
-        <pagebreadcrumb :data="breadcrumb" @refresh="resetSearch(),resetTable(),reFresh()"/>
+        <pagebreadcrumb :data="breadcrumb" @refresh="reFresh"/>
         <div class="pageBox" style="flex:1;display: flex;flex-direction: column;">
             <div class="table_bar">
                 <el-button-group>
-                    <el-button type="primary" icon="el-icon-plus" @click="showForm()">添加</el-button>
+                    <el-button type="primary" icon="el-icon-plus" @click="showadd">添加</el-button>
                     <el-button type="danger" icon="el-icon-delete" @click="deleteSelected">批量删除</el-button>
                 </el-button-group>
             </div>
             <search-box
-                    @refresh="resetSearch(),resetTable(),reFresh()"
-                    @search="reFresh"
-                    @reset="resetSearch(),reFresh()"
                     :search-item="this.storeData.searchForm.items"
                     :table-item="this.storeData.table.items"
                     :tool="['export','print','refresh','settable']"
@@ -31,7 +28,7 @@
                             <!--<el-button icon="el-icon-search" circle></el-button>-->
                             <el-tooltip class="item" effect="dark" content="修改" placement="bottom-start">
                                 <el-button type="primary" icon="el-icon-edit" circle
-                                           @click="showForm(scope.row)"></el-button>
+                                           @click="showedit(scope.row)"></el-button>
                             </el-tooltip>
                             <!--<el-button type="success" icon="el-icon-check" circle></el-button>-->
                             <!--<el-button type="info" icon="el-icon-message" circle></el-button>-->
@@ -46,7 +43,7 @@
                                 <div style="text-align: right; margin: 0">
                                     <el-button size="mini" type="text" @click="scope.row.deleteShow = false">取消
                                     </el-button>
-                                    <el-button type="primary" size="mini" @click="deleteData([scope.row.name])">确定
+                                    <el-button type="primary" size="mini" @click="deleteData(scope.row)">确定
                                     </el-button>
                                 </div>
                                 <el-tooltip slot="reference" class="item" effect="dark" content="删除"
@@ -89,27 +86,23 @@
   import AdminAuthItemTableList from "@src/pages/modules/admin/AdminAuthItem/component/list/AdminAuthItemTableList";
   import HhPrizeForm from "./component/form";
   import LpTableList from "@src/resource/mixins/LpTableList";
-
   export default {
     name: "index",
-    components: {AdminAuthItemTableList, SearchBox},
-    mixins: [LpBaseTabPage, LpBase, LpTableList],
+    components: {AdminAuthItemTableList,SearchBox},
+    mixins: [LpBaseTabPage,LpBase,LpTableList],
     created() {
       this.setStore(store);
     },
-    mounted() {
-      console.log(this.storePath)
-    },
-    methods: {
-      showForm(row = null) {
-        var config = {
-          title: row ? "修改" : "添加",
-          icon: row ? "edit" : "save",
-          params: row ? {type: "update", data: row} : {type: "add"},
-        }
-        this.showModal(HhPrizeForm, config)
+    methods:{
+      showadd() {
+        this.showModal(HhPrizeForm, {
+          title: "添加",
+          icon: "save",
+          width: "90%",
+          height: "90%",
+          params: {id: 1}
+        })
       },
-
     }
   }
 </script>

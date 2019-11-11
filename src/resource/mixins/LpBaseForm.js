@@ -17,7 +17,13 @@ export default {
     }
   },
   props: {
-
+    params:{
+      type:Object,
+      default:{
+        type:"add",
+        data:null
+      }
+    }
 
   },
   created() {

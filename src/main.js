@@ -51,6 +51,9 @@ Vue.component("tableBar",tableBar)
 import TableList from "@resource/components/TableList";
 Vue.component("TableList",TableList)
 
+import LpAlert from "@src/resource/components/LpAlert";
+window.LpAlert=LpAlert
+
 //全局设置elementUI尺寸
 Vue.prototype.$ELEMENT = { size: 'mini'};
 
@@ -68,7 +71,6 @@ Vue.component('split-pane', splitPane);
 //引入图表库
 import VCharts from 'v-charts'
 Vue.use(VCharts)
-
 
 Vue.use(tabFrame)
 new Vue({

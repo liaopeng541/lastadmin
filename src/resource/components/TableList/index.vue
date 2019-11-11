@@ -8,7 +8,7 @@
                       :stripe="true"
                       class="table"
                       :height="defaultTableHeight"
-                      @header-click="setCurThead"
+
                       v-bind="$attrs"
                       v-on="$listeners"
                       @sort-change="sortTable"
@@ -67,6 +67,12 @@
   import LpTable from "./LpTable"
   import PicZoom from 'vue-piczoom'
   export default {
+    watch: {
+      "$parent.isReset": function () {
+        this.curThead='';
+        this.$refs.multipleTable.clearSort();
+      },
+    },
     props: {
       selection: {
         type: Boolean,
@@ -96,15 +102,16 @@
       },
       handleSelectionChange(val)
       {
-        this.$parent.$store.dispatch(this.storePath+"changeSelected",{data:val,__this:this});
+        this.$emit('selectionChange',val)
+     //   this.$parent.$store.dispatch(this.storePath+"changeSelected",{data:val,__this:this});
       },
       sortTable(params)
       {
-        console.log("eee")
         params.curThead=this.curThead;
         this.$emit('sortTable',params)
 
       },
+
     }
 
 

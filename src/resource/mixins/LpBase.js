@@ -28,6 +28,10 @@ export default {
       type: Number,
       default: 0
     },
+    isReset: {
+      type: Number,
+      default: 0
+    },
     storePath: {
       type: String,
       default: null
@@ -75,6 +79,20 @@ export default {
         this.storePath = this.$parent.storePath;
         this.storeData = this.$parent.storeData;
       }
+    },
+    LpAlert(config = null) {
+      var popComponent = _.cloneDeep(LpAlert);
+
+      popComponent.parent = this;
+      let pop = Vue.extend(popComponent);
+      let node = document.createElement("div");
+      this.$el.appendChild(node)
+      let cc = new pop().$mount(node);
+      cc.loadConfig(config);
+      cc.hide();
+      this.$nextTick(() => {
+        cc.show()
+      })
     },
     showModal(component, config = null) {
       let model_id = component.name + "-" + this._uid;

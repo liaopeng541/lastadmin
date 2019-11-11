@@ -87,6 +87,7 @@
     components: {LpTable, SearchForm},
     created() {
       this.setStore(store);
+      console.log(this.$store)
     },
     methods: {
       showadd() {

@@ -16,8 +16,13 @@
                 </div>
             </div>
             <div class="toolbody">
-                <component :is="bodyComponent" style="flex: 1;display: flex;flex-direction: column;"
-                           @hide="closemodel" :params="config.params"></component>
+                <div style="min-width: 200px;min-height: 50px;padding: 10px">{{config.message&&config.message}}</div>
+                <div style="text-align: center;background: #ffffff;border-top: 1px solid #f0f2f5">
+                    <div style="height: 50px;align-items: center;display: flex;justify-content: center">
+                        <el-button @click="config.cancel&&config.cancel(),hide()">取 消</el-button>
+                        <el-button type="primary" style="margin-left: 30px" @click="config.ok&&config.ok(),hide()">确 认</el-button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -52,6 +57,20 @@
       center: {
         type: Boolean,
         default: true,
+      },
+      message:{
+        type: String,
+        default: ""
+      },
+      cancel:{
+        type: Function,
+        default: () => {
+        },
+      },
+      ok:{
+        type: Function,
+        default: () => {
+        },
       },
       onclose: {
         type: Function,

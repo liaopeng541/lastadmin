@@ -90,6 +90,25 @@ const util={
 
     return formItem;
   },
+  getFormData(state)
+  {
+      var databody=this.getFormBody(state);
+      Object.keys(databody).map((key)=>{
+        if(typeof databody[key]=='object')
+        {
+          databody[key]=JSON.stringify(databody[key]);
+        }
+        if(databody[key]===true)
+        {
+          databody[key]=1
+        }
+        if(databody[key]===false)
+        {
+          databody[key]=0
+        }
+      })
+      return databody
+  },
   getSearchParams(state)
   {
     let params=[];

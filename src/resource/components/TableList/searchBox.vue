@@ -1,6 +1,6 @@
 <template>
     <div style="border: 1px solid #EBEEF5;border-bottom: none;background: #EBEEF5">
-        <el-form :inline="true" style="padding: 5px">
+        <el-form :inline="true" style="padding: 5px" @submit.native.prevent>
             <div class="tabTool">
                 <div class="tabToolBox">
                     <slot></slot>
