@@ -6,6 +6,9 @@
                     <slot></slot>
                 </div>
                 <div v-show="tool.length>0" class="tabToolBox">
+                    <slot name="toolbtn">
+
+                    </slot>
                     <el-tooltip v-if="tool.indexOf('export')!=-1" class="item" effect="dark" content="导出" placement="bottom-start">
                         <el-button icon="el-icon-download" circle @click="export_file"
                         ></el-button>
@@ -24,7 +27,7 @@
                             width="330"
                             trigger="click">
                         <div style="width: 100%">
-                            <el-checkbox v-if="item.tpl"
+                            <el-checkbox v-if="item.tpl&&item.tpl!='hidden'"
                                          v-for="item in tableItem"
                                          v-model="item.show">{{item.label}}
                             </el-checkbox>
@@ -38,7 +41,7 @@
 
             </div>
             <slot :name="item.field" :item="item" :search="search"
-                  v-for="item in searchItem" v-if="item.tpl"
+                  v-for="item in searchItem" v-if="item&&item.length>0&&item.tpl"
             >
                 <el-form-item
                         :label="item.label?item.label:item.field"
@@ -50,7 +53,7 @@
                     </template>
                 </el-form-item>
             </slot>
-            <el-form-item>
+            <el-form-item >
                 <el-tooltip class="item" effect="dark" content="搜索" placement="bottom-start">
                     <el-button circle v-show="showSearch_btn" type="primary" icon="el-icon-search"
                                @click="search"></el-button>

@@ -53,7 +53,7 @@ export default _.merge({}, store.tpl.page, {
       //合并查询分页排序参
       //获取数据
       lp.$http().onLoading((loading) => {
-        context.state.loading = loading
+        context.state.table.loading = loading
       })
         .post(lp.$Api.baseurl + context.state.table.url.list, databody, (response) => {
           context.state.table.list = response.data.list;

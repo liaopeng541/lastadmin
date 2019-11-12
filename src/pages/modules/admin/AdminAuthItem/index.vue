@@ -25,7 +25,7 @@
                     @selection-change="handleSelectionChange"
                     v-loading="this.storeData.table.loading"
             >
-                <el-table-column slot="action" label="操作" width="120">
+                <el-table-column slot="action" label="操作" width="100" align="center">
                     <template slot-scope="scope">
                         <el-row>
                             <!--<el-button icon="el-icon-search" circle></el-button>-->
@@ -54,9 +54,9 @@
                                     <el-button type="danger" icon="el-icon-delete" circle></el-button>
                                 </el-tooltip>
                             </el-popover>
-                            <el-tooltip class="item" effect="dark" content="详情" placement="bottom-start">
-                                <el-button type="success" icon="el-icon-view" circle></el-button>
-                            </el-tooltip>
+                            <!--<el-tooltip class="item" effect="dark" content="详情" placement="bottom-start">-->
+                                <!--<el-button type="success" icon="el-icon-view" circle></el-button>-->
+                            <!--</el-tooltip>-->
 
                         </el-row>
                     </template>

@@ -5,29 +5,29 @@
                 <el-form v-loading="this.storeData.form.loading" ref="form" :model="formBody" :rules="formRules"
                          label-width="80px">
                     <!--<LpFormItem  :itemData="formItem.id"/>-->
-                    <LpFormItem :itemData="formItem.name"/>
-                    <LpFormItem :itemData="formItem.type"/>
-                    <span v-if="formItem.type.value==2">
-                        <el-col :span="24">
-                            <el-form-item label="商品">
-                                <goods-combo-grid v-model="formItem.goods_id.value"/>
-                            </el-form-item>
-                        </el-col>
-                        <el-col :span="24">
-                            <el-form-item label="商品属性">
-                                <goods-attr-combo-grid :disabled="!formItem.goods_id.value"
-                                                       disabled_placeholder="请先选择商品" v-model="formItem.attr_id.value"/>
-                            </el-form-item>
-                        </el-col>
-                    </span>
-                    <span v-if="formItem.type.value==4||formItem.type.value==3">
-                    <LpFormItem :itemData="formItem.day_max_total_money"/>
-                    <LpFormItem :itemData="formItem.min_money"/>
-                    <LpFormItem :itemData="formItem.max_money"/>
-                    </span>
-                    <LpFormItem :itemData="formItem.winning_rate"/>
-                    <LpFormItem :itemData="formItem.status"/>
-                    <LpFormItem :itemData="formItem.prize_level"/>
+                    <LpFormItem :itemData="formItem.admin_name" :disabled="params.type=='update'"/>
+                    <LpFormItem :itemData="formItem.admin_avatar"/>
+                    <!--<span v-if="formItem.type.value==2">-->
+                        <!--<el-col :span="24">-->
+                            <!--<el-form-item label="商品">-->
+                                <!--<goods-combo-grid v-model="formItem.goods_id.value"/>-->
+                            <!--</el-form-item>-->
+                        <!--</el-col>-->
+                        <!--<el-col :span="24">-->
+                            <!--<el-form-item label="商品属性">-->
+                                <!--<goods-attr-combo-grid :disabled="!formItem.goods_id.value"-->
+                                                       <!--disabled_placeholder="请先选择商品" v-model="formItem.attr_id.value"/>-->
+                            <!--</el-form-item>-->
+                        <!--</el-col>-->
+                    <!--</span>-->
+                    <!--<span v-if="formItem.type.value==4||formItem.type.value==3">-->
+                    <!--<LpFormItem :itemData="formItem.day_max_total_money"/>-->
+                    <!--<LpFormItem :itemData="formItem.min_money"/>-->
+                    <!--<LpFormItem :itemData="formItem.max_money"/>-->
+                    <!--</span>-->
+                    <!--<LpFormItem :itemData="formItem.winning_rate"/>-->
+                    <!--<LpFormItem :itemData="formItem.status"/>-->
+                    <!--<LpFormItem :itemData="formItem.prize_level"/>-->
                 </el-form>
             </div>
         </div>
@@ -54,20 +54,27 @@
     name: "HhprizeForm",
     components: {GoodsAttrComboGrid, GoodsComboGrid, LpComboGrid, LpFormItem},
     mixins: [LpBase, LpBaseForm],
+    props:{
+      params:null
+    },
     created() {
       this.setStore(store);
     },
     methods: {
       reFresh() {
         this.$store.dispatch(this.storePath + "/getDetail", {
-          data: this.params,
+          data: this.params.data,
           __this: this
         })
+        this.$nextTick(()=>{
+          this.$refs.form.clearValidate();
+        })
+
       },
       submit() {
         this.$refs.form.validate((valid) => {
           if (valid) {
-            this.$store.dispatch(this.storePath + "/submit")
+            this.$store.dispatch(this.storePath + "/submit",{__this:this})
           }
         })
       }

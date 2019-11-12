@@ -9,8 +9,57 @@
 .el-card__header{
   padding: 10px 15px;
 }
+.search_box {
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex:1
+}
+.search_form_box{
+  flex: 1;display: flex;padding: 0px;
+}
+@keyframes btn_up
+{
+  from {transform:rotate(90deg)}
+  to {transform:rotate(270deg)}
+}
+@keyframes btn_down
+{
+
+  to {transform:rotate(90deg)}
+}
+.down{
+  animation: btn_down 300ms;
+  animation-fill-mode:forwards
+}
+.up{
+  animation: btn_up 300ms;
+  animation-fill-mode:forwards
+}
+.el-form-item{
+  margin-bottom: 0px;
+}
 
 
+.tablelistbox{
+  flex: 1;display: flex;flex-direction: column;
+}
+.tablelisttable{
+  flex: 1;overflow: hidden
+}
+.table_bar{
+  display: flex;align-items: center;padding: 5px 5px 5px 0px;
+}
+.tabTool{
+  display: flex;flex-direction: row;align-items: center;float: right;padding-bottom: 5px;min-height: 29px;
+}
+.tabToolBox{
+  display: flex;align-items: center;
+}
+.tabToolBox .el-checkbox{
+  margin-right: 10px;
+}
 
 .box{
   background: #ffffff;margin: 5px;box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);border-bottom: 1px solid #ebeef5;display: flex;

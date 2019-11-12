@@ -8,7 +8,6 @@
                       :stripe="true"
                       class="table"
                       :height="defaultTableHeight"
-
                       v-bind="$attrs"
                       v-on="$listeners"
                       @sort-change="sortTable"

@@ -2,22 +2,28 @@ export default _.merge({}, store.tpl.page, {
   state: {
     table: {
       url: {
-        list: "system/admin-auth-item/list",
+        list: "system/admin-menu/list",
+        del:"system/admin-menu/delete"
       },
       params: {},
       rowKey: false,
       list: [],
       loading:false,
       multipleSelection: [],
+      expandcolum:"name",
+      expandname:"菜单名称",
+      expandAll:false,
       items: [
-        {field: "name", label: "角色名称", tpl: "text", show: true, sort: true},
-        {field: "description", label: "介绍", tpl: "text", show: true, sort: true},
+        {field: "id", label: "编号", tpl: "hidden", show: false, sort: true,width:80},
+        {field: "name", label: "菜单名称", tpl: "hidden", show: false, sort: true},
+        {field: "url", label: "链接", tpl: "text", show: true, sort: true},
       ],
       sort: {},
+      selected:[],
     },
     searchForm: {
       items: [
-        {field: "name", label: "角色名称", tpl: "input", value: "", searchType: "like"},
+        {field: "name", label: "菜单名称", tpl: "input", value: "", searchType: "like"},
       ],
 
     },
@@ -27,40 +33,18 @@ export default _.merge({}, store.tpl.page, {
       currentPage: 1,
       total: 0,
     },
-    form: {
-      url: {
-        detail: 'shop/prize/prize-form-detail'
-      },
-      loading: false,
-      items: [
-        {field: "id", label: "编号", tpl: "", value: "", placeholder: ""},
-        {field: "name", label: "名称", tpl: "input", value: "", placeholder: ""},
-        {
-          field: "type", label: "类型", tpl: "select", value: 1, placeholder: "", option: [
-            {value: '1', label: '外围商品'},
-          ]
-        },
-        {field: "goods_id", label: "商品", tpl: "input", value: "", placeholder: ""},
-        {field: "attr_id", label: "商品属性", tpl: "input", value: "", placeholder: ""},
-        {field: "user_money", label: "用户余额", tpl: "input", value: "", placeholder: ""},
-        {field: "wx_moeny", label: "微信红包", tpl: "input", value: "", placeholder: ""},
-        {field: "day_max_total_money", label: "每日总限额", tpl: "input", value: "", placeholder: ""},
-        {field: "min_money", label: "最小金额", tpl: "date", value: "", placeholder: ""},
-        {field: "max_money", label: "最大金额", tpl: "input", value: "", placeholder: ""},
-        {field: "add_time", label: "add_time", tpl: "input", value: "", placeholder: ""},
-        {field: "prize_level", label: "奖品等级", tpl: "number", value: "", placeholder: ""},
-        {field: "winning_rate", label: "中奖率", tpl: "number", value: "20", placeholder: ""},
-        {field: "status", label: "是否开启", tpl: "number", value: "1", placeholder: ""},
-      ],
-      rules: {
-        name: [
-          {required: true, message: '请输入活动名称', trigger: 'blur'},
-          {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-        ],
-      }
+
+  },
+  mutations: {
+    expandAll(state){
+      state.table.expandAll=!state.table.expandAll
+      var list=[];
+      state.table.list.map((item,i)=>{
+        list.push(Object.assign(item,{_expanded:state.table.expandAll}))
+      })
+      state.table.list=list
     }
   },
-  mutations: {},
   actions: {
     /**
      * 加载列表数据
@@ -82,7 +66,7 @@ export default _.merge({}, store.tpl.page, {
       //合并查询分页排序参
       //获取数据
       lp.$http().onLoading((loading) => {
-        context.state.loading = loading
+        context.state.table.loading = loading
       })
         .post(lp.$Api.baseurl + context.state.table.url.list, databody, (response) => {
           context.state.table.list = response.data.list;
@@ -110,20 +94,20 @@ export default _.merge({}, store.tpl.page, {
      * 设置列表选中项
      */
     changeSelected(context, {data, __this}) {
-      context.state.selected = data;
+      context.state.table.selected = data;
     },
     /**
      *删除列表选中项
      */
-    delRow(context, {data, __this}) {
+    delRow(context, {ids, __this}) {
       var databody = {
-        data: JSON.stringify(data)
+        delete_data: JSON.stringify(ids)
       }
       lp.$http().onLoading((loading) => {
         context.state.loading = loading
       })
-        .post(lp.$Api.baseurl + context.state.url.del, databody, (response) => {
-          __this.$message(response.message)
+        .post(lp.$Api.baseurl + context.state.table.url.del, databody, (response) => {
+          __this.$message.success(response.message)
           __this.reFresh()
         })
     },
