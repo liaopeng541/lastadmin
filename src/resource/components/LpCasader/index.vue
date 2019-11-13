@@ -5,8 +5,8 @@
             :props="dataAssign"
             change-on-select
             :clearable="true"
-            placeholder="顶级分类"
             @visible-change="showItem"
+            v-bind="$attrs" v-on="$listeners"
     >
     </el-cascader>
 </template>
@@ -85,6 +85,7 @@
         if (isshow&&this.options.length==0) {
           this.initlabel();
         }
+
       },
       // getOption(data, id) {
       //   var item;

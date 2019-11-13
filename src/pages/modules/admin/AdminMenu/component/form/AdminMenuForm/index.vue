@@ -4,30 +4,9 @@
             <div>
                 <el-form v-loading="this.storeData.form.loading" ref="form" :model="formBody" :rules="formRules"
                          label-width="80px">
-                    <!--<LpFormItem  :itemData="formItem.id"/>-->
-                    <LpFormItem :itemData="formItem.admin_name" :disabled="params.type=='update'"/>
-                    <LpFormItem :itemData="formItem.admin_avatar"/>
-                    <!--<span v-if="formItem.type.value==2">-->
-                        <!--<el-col :span="24">-->
-                            <!--<el-form-item label="商品">-->
-                                <!--<goods-combo-grid v-model="formItem.goods_id.value"/>-->
-                            <!--</el-form-item>-->
-                        <!--</el-col>-->
-                        <!--<el-col :span="24">-->
-                            <!--<el-form-item label="商品属性">-->
-                                <!--<goods-attr-combo-grid :disabled="!formItem.goods_id.value"-->
-                                                       <!--disabled_placeholder="请先选择商品" v-model="formItem.attr_id.value"/>-->
-                            <!--</el-form-item>-->
-                        <!--</el-col>-->
-                    <!--</span>-->
-                    <!--<span v-if="formItem.type.value==4||formItem.type.value==3">-->
-                    <!--<LpFormItem :itemData="formItem.day_max_total_money"/>-->
-                    <!--<LpFormItem :itemData="formItem.min_money"/>-->
-                    <!--<LpFormItem :itemData="formItem.max_money"/>-->
-                    <!--</span>-->
-                    <!--<LpFormItem :itemData="formItem.winning_rate"/>-->
-                    <!--<LpFormItem :itemData="formItem.status"/>-->
-                    <!--<LpFormItem :itemData="formItem.prize_level"/>-->
+                    <LpFormItem :itemData="formItem.pid"/>
+                    <LpFormItem :itemData="formItem.name" :disabled="params.type=='update'"/>
+                    <LpFormItem :itemData="formItem.url"/>
                 </el-form>
             </div>
         </div>

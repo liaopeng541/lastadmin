@@ -51,7 +51,7 @@
   import store from "./store";
 
   export default {
-    name: "HhprizeForm",
+    name: "AdminUserDetail",
     components: {GoodsAttrComboGrid, GoodsComboGrid, LpComboGrid, LpFormItem},
     mixins: [LpBase, LpBaseForm],
     props:{

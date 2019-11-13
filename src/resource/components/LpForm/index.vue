@@ -13,6 +13,9 @@
                                    :value="option.value"></el-option>
                     </el-select>
                 </el-form-item>
+
+
+
                 <el-form-item :label="item.label" v-if="item.tpl&&item.tpl=='date'">
                     <el-date-picker type="date" :placeholder="'请选择'+(item.label?item.label:item.field)"
                                     v-model="item.value"

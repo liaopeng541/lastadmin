@@ -1,6 +1,7 @@
 export default {
   watch: {
     "$parent.isRefresh": function () {
+      console.log("pppp")
       this.reFresh && this.reFresh();
     },
     "$parent.isshow": function () {
@@ -86,7 +87,9 @@ export default {
       popComponent.parent = this;
       let pop = Vue.extend(popComponent);
       let node = document.createElement("div");
-      this.$el.appendChild(node)
+      var rootNode=$(this.$el).parents(".pageBox");
+      rootNode.append(node)
+    //  this.$el.appendChild(node)
       let cc = new pop().$mount(node);
       cc.loadConfig(config);
       cc.hide();
@@ -111,7 +114,8 @@ export default {
       let pop = Vue.extend(popComponent);
 
       let node = document.createElement("div");
-      this.$el.appendChild(node)
+      var rootNode=$(this.$el).parents(".pageBox");
+      rootNode.append(node)
       let cc = new pop().$mount(node);
       cc.loadConfig(config);
       cc.loadComponent(model_id);
@@ -141,6 +145,7 @@ export default {
       this.$emit('show')
     },
     reFresh() {
+
       this.isRefresh++;
       this.$emit("refresh")
     }

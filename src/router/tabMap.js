@@ -2,12 +2,12 @@
 
 export default {
   install:(Vue)=>{
-
     Vue.component('home', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/home')),'home')})
 		Vue.component('admin_AdminAuthItem_index', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/admin/AdminAuthItem')),'admin_AdminAuthItem')})
     Vue.component('shop_HhPrize_index', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/shop/HhPrize/index')),'shop_HhPrize_index')})
     Vue.component('admin_AdminUser_index', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/admin/AdminUser')),'admin_AdminUser')})
     Vue.component('admin_AdminMenu_index', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/admin/AdminMenu')),'admin_AdminMenu')})
+    Vue.component('system_HhOtoOrderType_index', (resolve) => {require.ensure([], () => resolve(require('@pages/modules/shop/HhOtoOrderType')),'system_HhOtoOrderType')})
 				// Vue.component('admin_AdminUser', (resolve) => {require.ensure([], () => resolve(require('@pages/admin/AdminUser')),'admin_AdminUser')}),
 				// Vue.component('admin_AdminMenu', (resolve) => {require.ensure([], () => resolve(require('@pages/admin/AdminMenu')),'admin_AdminMenu')}),
 				// Vue.component('system_HhServicePriceTactics', (resolve) => {require.ensure([], () => resolve(require('@pages/system/HhServicePriceTactics')),'system_HhServicePriceTactics')}),

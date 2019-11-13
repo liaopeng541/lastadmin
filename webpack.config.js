@@ -90,7 +90,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'happypack/loader?id=happy-babel-js',
-        include: [path.resolve(__dirname, './src')],
+        include: [path.resolve(__dirname, './src'),path.resolve(__dirname,'./node_modules/element-ui/src/utils')],
         exclude: ["/node_modules/"]
       },
       {

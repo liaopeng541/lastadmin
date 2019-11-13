@@ -2,17 +2,17 @@ export default _.merge({}, store.tpl.page, store.tpl.data, {
   state: {
     form: {
       url: {
-        detail: "system/admin-auth-item/detail",
-        update: "system/admin-auth-item/update",
+        detail: "system/admin-user/detail",
+        update: "system/admin-user/update",
       },
       loading: false,
       items: [
-        {field: "admin_name", label: "用户我", tpl: "input", show: true, sort: true},
-        {field: "admin_avatar", label: "用户头像", tpl: "textarea", show: true, sort: true},
+        {field: "admin_name", label: "用户名", tpl: "input", show: true, sort: true},
+        {field: "admin_avatar", label: "用户头像", tpl: "upimage", show: true, sort: true},
       ],
       rules: {
         name: [
-          {required: true, message: '请输入活动名称', trigger: 'admin_name'},
+          {required: true, message: '请输入用户名', trigger: 'admin_name'},
         ],
       }
     }
