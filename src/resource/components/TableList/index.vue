@@ -20,7 +20,7 @@
                             width="55">
                     </el-table-column>
                 </slot>
-                <slot v-for="item in tableItem" v-if="item.tpl && item.show" :name="item.field">
+                <slot v-for="item in tableItem" v-if="item.show&&item.tpl " :name="item.field">
                     <el-table-column :label="item.label?item.label:item.field"
                                      :sortable="item.sort==true?item.field:false"
                                      :show-overflow-tooltip="true"
@@ -45,10 +45,17 @@
                                         active-color="#13ce66"
                                         inactive-color="#cccccc"
                                         active-value="1"
-                                        inactive-value="0">
+                                        inactive-value="0"
+
+                                >
                                 </el-switch>
                             </template>
-
+                            <template v-if="item.tpl&&item.tpl=='tag'">
+                                <el-tag type="success">{{scope.row[item.field]}}</el-tag>
+                            </template>
+                            <template v-if="item.tpl&&item.tpl=='progress'">
+                                <el-progress   :stroke-width="16" :percentage="10"></el-progress>
+                            </template>
 
 
                         </template>

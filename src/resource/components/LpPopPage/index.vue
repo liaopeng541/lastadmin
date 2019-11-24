@@ -15,8 +15,8 @@
                     <i class="el-icon-close"></i>
                 </div>
             </div>
-            <div class="toolbody">
-                <component :is="bodyComponent" style="flex: 1;display: flex;flex-direction: column;"
+            <div class="toolbody" >
+                <component :is="bodyComponent"
                            @hide="closemodel" :params="config.params"></component>
             </div>
         </div>

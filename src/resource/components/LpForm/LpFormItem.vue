@@ -27,6 +27,19 @@
             >
             </lp-casader>
         </el-form-item>
+        <el-form-item :label="itemData.label" v-if="itemData.tpl&&itemData.tpl=='treeselect'">
+            <lp-tree-select v-model="itemData.value"
+                        :placeholder="itemData.placeholder||'请选择'+(itemData.label?itemData.label:itemData.field)"
+                        v-bind="$attrs" v-on="$listeners"
+                        :url="itemData.options.url"
+                        :style="itemData.width?'width:'+itemData.width+'px':''"
+                        :rootKey="itemData.options.rootKey!=null?itemData.options.rootKey:0"
+                        :rootTitle="itemData.options.rootTitle?itemData.options.rootTitle:null"
+                        :treeDefaultExpandAll="itemData.options.expandAll?true:false"
+
+            >
+            </lp-tree-select>
+        </el-form-item>
 
         <el-form-item :label="itemData.label" v-if="itemData.tpl&&itemData.tpl=='date'">
             <el-date-picker type="date"
@@ -97,10 +110,11 @@
   import LPups from "@resource/components/LPup/LPups"
   import Tinymce from "@resource/components/Tinymce"
   import LpCasader from "@src/resource/components/LpCasader/index";
+  import LpTreeSelect from "@src/resource/components/LpTreeSelect/index";
 
   export default {
     name: "LpFormItem",
-    components: {LPup, LPups, Tinymce, LpCasader},
+    components: {LpTreeSelect, LPup, LPups, Tinymce, LpCasader},
     props: {
       itemData: {
         type: Object,

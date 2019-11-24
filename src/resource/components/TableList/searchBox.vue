@@ -41,7 +41,7 @@
 
             </div>
             <slot :name="item.field" :item="item" :search="search"
-                  v-for="item in searchItem" v-if="item&&item.length>0&&item.tpl"
+                  v-for="item in searchItem" v-if="item.tpl"
             >
                 <el-form-item
                         :label="item.label?item.label:item.field"

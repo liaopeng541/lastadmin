@@ -60,7 +60,25 @@ export default {
     {
       this.$store.dispatch(this.storePath+"/changeSelected",{data:val,__this:this});
     },
+    deleteSelected() {
+      if (this.storeData.table.selected && this.storeData.table.selected.length > 0) {
+        //弹窗确认
+        this.LpAlert({
+          title: "系统提示",
+          message: "您确认批量删除 (" + this.storeData.table.selected.length + ") 条数据么?",
+          ok: () => {
+            var ids = [];
+            this.storeData.table.selected.map((item) => {
+              ids.push(item[this.storeData.table.priKey])
+            })
+            this.$store.dispatch(this.storePath + "/delRow", {ids: ids, __this: this});
+          }
+        })
+      } else {
+        this.$message.info("请选择要删除的数据")
+      }
 
+    }
 
   }
 

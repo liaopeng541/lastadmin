@@ -113,7 +113,7 @@
   import LpMenu from "@resource/components/LpMenu";
   export default {
     name: "Index",
-    components: {LpMenu},
+    components: { LpMenu},
     data() {
       return {
         isCollapse: false,
@@ -194,7 +194,8 @@
           {
             items[2]='index';
           }
-          return './' + items[0] + '/' + this.$common.L_T(items[1]) +'/'+items[2]+ ".vue";
+         // return './' + items[0] + '/' + this.$common.L_T(items[1]) +'/'+items[2]+ ".vue";
+          return './' + items[0] + '/' + items[1] +'/'+items[2]+ ".vue";
         }
 
       },

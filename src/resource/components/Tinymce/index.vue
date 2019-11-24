@@ -105,6 +105,7 @@ export default {
         menubar: this.menubar,
         plugins: plugins,
         language:'zh_CN',
+        language_url:'https://cdn.jsdelivr.net/npm/tinymce-lang/langs/zh_CN.js',
         end_container_on_empty_block: true,
         powerpaste_word_import: 'clean',
         code_dialog_height: 450,
@@ -197,7 +198,7 @@ export default {
   line-height: normal;
 }
 .tinymce-container>>>.mce-fullscreen {
-  z-index: 10000;
+  z-index: 20;
 }
 .tinymce-textarea {
   visibility: hidden;
@@ -210,7 +211,7 @@ export default {
   /*z-index: 2005;*/
 }
 .fullscreen .editor-custom-btn-container {
-  z-index: 10000;
+  z-index: 20;
   position: fixed;
 }
 .editor-upload-btn {
