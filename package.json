@@ -22,7 +22,7 @@
     "lodash": "^4.17.10",
     "node-uuid": "^1.4.8",
     "rxjs": "^6.5.1",
-    "tinymce": "^4.9.4",
+    "tinymce": "^5.7.1",
     "v-charts": "^1.19.0",
     "v-viewer": "^1.4.0",
     "vue-piczoom": "^1.0.6",
